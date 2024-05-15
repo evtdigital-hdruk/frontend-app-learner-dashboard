@@ -23,7 +23,7 @@ export const ExpandedHeader = () => {
 
   return (
     !isCollapsed && (
-    <header className="d-flex shadow-sm align-items-center learner-variant-header pl-4">
+    <header className="d-flex shadow-sm align-items-center learner-variant-header pl-4 max-w-xl mx-auto">
       <div className="flex-grow-1 d-flex align-items-center">
         <BrandLogo />
 
@@ -34,14 +34,6 @@ export const ExpandedHeader = () => {
           className="p-4 course-link"
         >
           {formatMessage(messages.course)}
-        </Button>
-        <Button
-          as="a"
-          href={urls.programsUrl()}
-          variant="inverse-primary"
-          className="p-4"
-        >
-          {formatMessage(messages.program)}
         </Button>
         <Button
           as="a"
