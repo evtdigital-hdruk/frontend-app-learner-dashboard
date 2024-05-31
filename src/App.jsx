@@ -56,13 +56,6 @@ export const App = () => {
     return null;
   };
 
-  const loadGTM = () => {
-    if (getConfig().GOOGLE_TAG_MANAGER_ID) {
-      return <GoogleTagManager gtmId={getConfig().GOOGLE_TAG_MANAGER_ID} />;
-    }
-    return null;
-  };
-
   React.useEffect(() => {
     if (authenticatedUser?.administrator || getConfig().NODE_ENV === 'development') {
       window.loadEmptyData = () => {
@@ -101,7 +94,7 @@ export const App = () => {
         <link rel="shortcut icon" href={getConfig().FAVICON_URL} type="image/x-icon" />
         {optimizelyScript()}
       </Helmet>
-      {loadGTM()}
+      <GoogleTagManager />
       <div>
         <AppWrapper>
           <LearnerDashboardHeader />
