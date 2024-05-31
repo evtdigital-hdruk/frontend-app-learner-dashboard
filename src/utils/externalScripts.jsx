@@ -1,17 +1,19 @@
 import React, { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
+
+import { getConfig } from '@edx/frontend-platform';
 import { Helmet } from 'react-helmet';
 
-const GoogleTagManager = ({ gtmId }) => {
+const GoogleTagManager = () => {
+  const gtmId = (getConfig().GOOGLE_TAG_MANAGER_ID);
   const isGtmLoaded = useRef(false);
 
   useEffect(() => {
-    if (!isGtmLoaded.current) {
+    if (gtmId && !isGtmLoaded.current) {
       isGtmLoaded.current = true;
       const noscript = document.createElement('noscript');
       noscript.innerHTML = `
-        <iframe src="https://www.googletagmanager.com/ns.html?id=${gtmId}"
-          height="0" width="0" style="display:none;visibility:hidden"></iframe>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=${gtmId}"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe>
       `;
       document.body.insertBefore(noscript, document.body.firstChild);
       return () => {
@@ -22,6 +24,10 @@ const GoogleTagManager = ({ gtmId }) => {
     }
     return null;
   }, [gtmId]);
+
+  if (!gtmId) {
+    return false;
+  }
 
   return (
     <Helmet>
@@ -36,10 +42,6 @@ const GoogleTagManager = ({ gtmId }) => {
       </script>
     </Helmet>
   );
-};
-
-GoogleTagManager.propTypes = {
-  gtmId: PropTypes.string.isRequired,
 };
 
 export default GoogleTagManager;

@@ -28,6 +28,7 @@ import LearnerDashboardHeader from 'containers/LearnerDashboardHeader';
 import { getConfig } from '@edx/frontend-platform';
 import messages from './messages';
 import './App.scss';
+import GoogleTagManager from './utils/externalScripts';
 
 export const App = () => {
   const { authenticatedUser } = React.useContext(AppContext);
@@ -77,6 +78,7 @@ export const App = () => {
         <title>{formatMessage(messages.pageTitle)}</title>
         <link rel="shortcut icon" href={getConfig().FAVICON_URL} type="image/x-icon" />
       </Helmet>
+      <GoogleTagManager />
       <div>
         <AppWrapper>
           <LearnerDashboardHeader />
