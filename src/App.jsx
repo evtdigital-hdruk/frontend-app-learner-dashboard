@@ -30,6 +30,7 @@ import LearnerDashboardHeader from 'containers/LearnerDashboardHeader';
 import { getConfig } from '@edx/frontend-platform';
 import messages from './messages';
 import './App.scss';
+import GoogleTagManager from './utils/externalScripts';
 
 export const App = () => {
   const { authenticatedUser } = React.useContext(AppContext);
@@ -51,6 +52,13 @@ export const App = () => {
           src={`${getConfig().MARKETING_SITE_BASE_URL}/optimizelyjs/${getConfig().OPTIMIZELY_PROJECT_ID}.js`}
         />
       );
+    }
+    return null;
+  };
+
+  const loadGTM = () => {
+    if (getConfig().GOOGLE_TAG_MANAGER_ID) {
+      return <GoogleTagManager gtmId={getConfig().GOOGLE_TAG_MANAGER_ID} />;
     }
     return null;
   };
@@ -93,6 +101,7 @@ export const App = () => {
         <link rel="shortcut icon" href={getConfig().FAVICON_URL} type="image/x-icon" />
         {optimizelyScript()}
       </Helmet>
+      {loadGTM()}
       <div>
         <AppWrapper>
           <LearnerDashboardHeader />
