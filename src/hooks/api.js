@@ -1,6 +1,9 @@
 import React from 'react';
 
 import { AppContext } from '@edx/frontend-platform/react';
+import { getConfig } from '@edx/frontend-platform/';
+
+import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 
 import { RequestKeys } from 'data/constants/requests';
 import { post } from 'data/services/lms/utils';
@@ -93,8 +96,8 @@ export const useUpdateEmailSettings = (cardId) => {
 };
 
 export const useSendConfirmEmail = () => {
-  const { sendEmailUrl } = reduxHooks.useEmailConfirmationData();
-  return () => post(sendEmailUrl);
+  const url = new URL(`${getConfig().LMS_BASE_URL}/api/send_account_activation_email`);
+  return () => getAuthenticatedHttpClient().post(url.href, {});
 };
 
 export const useCreateCreditRequest = (cardId) => {
