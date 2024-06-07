@@ -6,7 +6,6 @@ import { getConfig } from '@edx/frontend-platform/';
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 
 import { RequestKeys } from 'data/constants/requests';
-import { post } from 'data/services/lms/utils';
 import api from 'data/services/lms/api';
 
 import * as reduxHooks from 'data/redux/hooks';
