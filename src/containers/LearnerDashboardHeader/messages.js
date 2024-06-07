@@ -63,8 +63,8 @@ const messages = defineMessages({
   },
   logoAltText: {
     id: 'learnerVariantDashboard.logoAltText',
-    defaultMessage: 'edX, Inc. Dashboard',
-    description: 'Alt text for the edX logo.',
+    defaultMessage: 'Futures Dashboard',
+    description: 'Alt text for the Futures logo.',
   },
   collapseMenuOpenAltText: {
     id: 'learnerVariantDashboard.collapseMenuOpenAltText',
