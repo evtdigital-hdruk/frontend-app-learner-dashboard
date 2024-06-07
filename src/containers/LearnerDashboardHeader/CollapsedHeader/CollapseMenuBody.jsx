@@ -26,12 +26,6 @@ export const CollapseMenuBody = ({ isOpen }) => {
   return (
     isOpen && (
       <div className="d-flex flex-column shadow-sm nav-small-menu">
-        <Button as="a" href="/" variant="inverse-primary">
-          {formatMessage(messages.course)}
-        </Button>
-        <Button as="a" href={urls.programsUrl()} variant="inverse-primary">
-          {formatMessage(messages.program)}
-        </Button>
         <Button
           as="a"
           href={urls.baseAppUrl(courseSearchUrl)}
@@ -41,13 +35,13 @@ export const CollapseMenuBody = ({ isOpen }) => {
           {formatMessage(messages.discoverNew)}
         </Button>
         <WidgetNavbar placement={COLLAPSED_NAVBAR} />
-        <Button as="a" href={getConfig().SUPPORT_URL} variant="inverse-primary">
+        <Button as="a" href={urls.helpUrl()} variant="inverse-primary">
           {formatMessage(messages.help)}
         </Button>
         {authenticatedUser && (
           <>
             {!!dashboard && (
-              <Button as="a" href={dashboard.url} variant="inverse-primary">
+              <Button as="a" href={urls.dashboardUrl()} variant="inverse-primary">
                 {formatMessage(messages.dashboard)}
               </Button>
             )}

@@ -29,11 +29,11 @@ export const ExpandedHeader = () => {
 
         <Button
           as="a"
-          href="/"
+          href={urls.dashboardUrl()}
           variant="inverse-primary"
           className="p-4 course-link"
         >
-          {formatMessage(messages.course)}
+          {formatMessage(messages.dashboard)}
         </Button>
         <Button
           as="a"
@@ -48,7 +48,7 @@ export const ExpandedHeader = () => {
         <span className="flex-grow-1" />
         <Button
           as="a"
-          href={getConfig().SUPPORT_URL}
+          href={urls.helpUrl()}
           variant="inverse-primary"
           className="p-4"
         >
