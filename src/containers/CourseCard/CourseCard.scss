@@ -2,19 +2,34 @@
 
 .course-card {
   .card {
+    height: 100%;
+
     .pgn__card-wrapper-image-cap.vertical {
       display: flex;
       min-height: $card-image-vertical-max-height;
     }
+
+    .pgn__card-wrapper-image-cap.horizontal {
+      max-width: 100%;
+      min-width: 100%;
+      aspect-ratio: 16/9;
+    }
+
     .pgn__card-image-cap {
       border-bottom-left-radius: 0 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      border-radius: 0.375rem 0.375rem 0 0 !important;
     }
+
     .overflow-visible {
       overflow: visible;
     }
+
     .pgn__card-header-content {
       margin-top: 1.5rem;
     }
+
     .pgn__card-footer {
       flex-wrap: nowrap;
 
@@ -25,7 +40,20 @@
       .pgn__action-row {
         align-self: flex-end;
         white-space: nowrap;
+        > * {
+          margin: 0 5px !important;
+          margin-bottom: 0 !important;
+        }
       }
+    }
+
+    .pgn__card-body {
+      flex-grow: 1;
+
+      .pgn__card-header-content {
+        margin: 0.5rem 0 0 0 !important;
+      }
+
     }
 
     .course-card-verify-ribbon-container {
@@ -39,7 +67,7 @@
         border-radius: 0;
       }
 
-      > img {
+      >img {
         width: 40px;
         z-index: 1000;
         position: absolute;
@@ -50,7 +78,7 @@
   }
 
   .course-card-banners {
-    > .alert {
+    >.alert {
       border-radius: 0;
       box-shadow: none;
       padding: map-get($spacers, 3) map-get($spacers, 4);
@@ -66,7 +94,7 @@
         list-style: none;
         display: inline;
 
-        > li {
+        >li {
           line-height: 1rem;
         }
       }
