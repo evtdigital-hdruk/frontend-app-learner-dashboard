@@ -17,20 +17,18 @@ export const CourseCardTitle = ({ cardId }) => {
   );
   const { disableCourseTitle } = useActionDisabledState(cardId);
   return (
-    <h3>
-      {disableCourseTitle ? (
-        <span className="course-card-title" data-testid="CourseCardTitle">{courseName}</span>
-      ) : (
-        <a
-          href={homeUrl}
-          className="course-card-title"
-          data-testid="CourseCardTitle"
-          onClick={handleTitleClicked}
-        >
-          {courseName}
-        </a>
-      )}
-    </h3>
+    disableCourseTitle ? (
+      <span className="course-card-title" data-testid="CourseCardTitle">{courseName}</span>
+    ) : (
+      <a
+        href={homeUrl}
+        className="course-card-title"
+        data-testid="CourseCardTitle"
+        onClick={handleTitleClicked}
+      >
+        {courseName}
+      </a>
+    )
   );
 };
 
