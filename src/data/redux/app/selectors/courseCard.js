@@ -32,6 +32,7 @@ export const courseCard = StrictDict({
       courseNumber: course.courseNumber,
       courseName: course.courseName,
       socialShareUrl: course.socialShareUrl,
+      noGrade: course.noGrade,
     }),
   ),
   courseProvider: mkCardSelector(
