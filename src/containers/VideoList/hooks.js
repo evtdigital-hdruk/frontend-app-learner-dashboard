@@ -18,26 +18,26 @@ export const state = StrictDict({
   sortBy: (val) => React.useState(val), // eslint-disable-line
 });
 
-export const useCourseListData = () => {
+export const useVideoListData = () => {
   const [filters, setFilters] = useCheckboxSetValues([]);
   const [sortBy, setSortBy] = module.state.sortBy(SortKeys.enrolled);
-  const pageNumber = reduxHooks.usePageNumber();
+  const videoPageNumber = reduxHooks.useVideoPageNumber();
   const querySearch = queryString.parse(window.location.search, { parseNumbers: true });
 
-  const { numPages, visible } = reduxHooks.useCurrentCourseList({
+  const { numPages, visible } = reduxHooks.useCurrentVideoList({
     sortBy,
     filters,
     pageSize: querySearch?.disable_pagination === 1 ? 0 : ListPageSize,
   });
 
   const handleRemoveFilter = (filter) => () => setFilters.remove(filter);
-  const setPageNumber = reduxHooks.useSetPageNumber();
+  const setVideoPageNumber = reduxHooks.useSetVideoPageNumber();
 
   return {
-    pageNumber,
+    videoPageNumber,
     numPages,
-    setPageNumber,
-    visibleList: visible,
+    setVideoPageNumber,
+    visibleVideoList: visible,
     filterOptions: {
       sortBy,
       setSortBy,
@@ -49,4 +49,4 @@ export const useCourseListData = () => {
   };
 };
 
-export default useCourseListData;
+export default useVideoListData;

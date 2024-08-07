@@ -11,7 +11,7 @@ import {
 import VideoCard from 'containers/VideoCard';
 import NoCoursesView from './NoCoursesView';
 
-import { useCourseListData, useIsCollapsed } from './hooks';
+import { useVideoListData, useIsCollapsed } from './hooks';
 
 import messages from './messages';
 
@@ -22,13 +22,13 @@ export const VideoList = () => {
   const hasCourses = reduxHooks.useHasCourses();
   const {
     filterOptions,
-    setPageNumber,
+    setVideoPageNumber,
     numPages,
     showFilters,
-    visibleList,
-  } = useCourseListData();
+    visibleVideoList,
+  } = useVideoListData();
   const isCollapsed = useIsCollapsed();
-  const coursesList = visibleList.filter((course) => course.course.courseType === 'video');
+  const coursesList = visibleVideoList.filter((course) => course.course.courseType === 'video');
   return (
     <div className="course-list-container">
       <div className="course-list-heading-container">
@@ -45,17 +45,19 @@ export const VideoList = () => {
                 <ActiveCourseFilters {...filterOptions} />
               </div>
             )}
-            <div className="d-flex flex-column flex-grow-1">
-              {coursesList.map(({ cardId }) => (
-                <VideoCard key={cardId} cardId={cardId} />
-              ))}
+            <div className="d-flex flex-column flex-grow-1 container">
+              <div className="row">
+                {coursesList.map(({ cardId }) => (
+                  <VideoCard key={cardId} cardId={cardId} />
+                ))}
+              </div>
               {numPages > 1 && (
                 <Pagination
                   variant={isCollapsed ? 'reduced' : 'secondary'}
                   paginationLabel="Course List"
                   className="mx-auto mb-2"
                   pageCount={numPages}
-                  onPageSelect={setPageNumber}
+                  onPageSelect={setVideoPageNumber}
                 />
               )}
             </div>
