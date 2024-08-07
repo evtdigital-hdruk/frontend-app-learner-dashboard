@@ -28,7 +28,6 @@ export const VideoList = () => {
     visibleVideoList,
   } = useVideoListData();
   const isCollapsed = useIsCollapsed();
-  const coursesList = visibleVideoList.filter((course) => course.course.courseType === 'video');
   return (
     <div className="course-list-container">
       <div className="course-list-heading-container">
@@ -47,7 +46,7 @@ export const VideoList = () => {
             )}
             <div className="d-flex flex-column flex-grow-1 container">
               <div className="row">
-                {coursesList.map(({ cardId }) => (
+                {visibleVideoList.map(({ cardId }) => (
                   <VideoCard key={cardId} cardId={cardId} />
                 ))}
               </div>
