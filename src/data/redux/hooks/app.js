@@ -9,6 +9,7 @@ const actions = redux.actions.app;
 
 /** Simple Selectors **/
 export const usePageNumber = () => useSelector(selectors.pageNumber);
+export const useVideoPageNumber = () => useSelector(selectors.videoPageNumber);
 export const useEmailConfirmationData = () => useSelector(selectors.emailConfirmation);
 export const useEnterpriseDashboardData = () => useSelector(selectors.enterpriseDashboard);
 export const usePlatformSettingsData = () => useSelector(selectors.platformSettings);
@@ -20,6 +21,9 @@ export const useHasCourses = () => useSelector(selectors.hasCourses);
 export const useHasAvailableDashboards = () => useSelector(selectors.hasAvailableDashboards);
 export const useCurrentCourseList = (opts) => useSelector(
   state => selectors.currentList(state, opts),
+);
+export const useCurrentVideoList = (opts) => useSelector(
+  state => selectors.currentVideoList(state, opts),
 );
 export const useShowSelectSessionModal = () => useSelector(selectors.showSelectSessionModal);
 
@@ -75,6 +79,11 @@ export const useTrackCourseEvent = (tracker, cardId, ...args) => {
 export const useSetPageNumber = () => {
   const dispatch = useDispatch();
   return (value) => dispatch(actions.setPageNumber(value));
+};
+
+export const useSetVideoPageNumber = () => {
+  const dispatch = useDispatch();
+  return (value) => dispatch(actions.setVideoPageNumber(value));
 };
 
 export const useLoadData = () => {
