@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 
 import { reduxHooks } from 'hooks';
-import { useCourseListData, useIsCollapsed } from './hooks';
+import { useVideoListData, useIsCollapsed } from './hooks';
 import CourseList from '.';
 
 jest.mock('hooks', () => ({
@@ -9,7 +9,7 @@ jest.mock('hooks', () => ({
 }));
 
 jest.mock('./hooks', () => ({
-  useCourseListData: jest.fn(),
+  useVideoListData: jest.fn(),
   useIsCollapsed: jest.fn(),
 }));
 
@@ -31,7 +31,7 @@ describe('CourseList', () => {
   };
   useIsCollapsed.mockReturnValue(false);
   const createWrapper = (courseListData) => {
-    useCourseListData.mockReturnValueOnce({
+    useVideoListData.mockReturnValueOnce({
       ...defaultCourseListData,
       ...courseListData,
     });

@@ -9,9 +9,9 @@ import * as hooks from './hooks';
 
 jest.mock('hooks', () => ({
   reduxHooks: {
-    useCurrentCourseList: jest.fn(),
-    usePageNumber: jest.fn(() => 23),
-    useSetPageNumber: jest.fn(),
+    useCurrentVideoList: jest.fn(),
+    useVideoPageNumber: jest.fn(() => 23),
+    useSetVideoPageNumber: jest.fn(),
   },
 }));
 
@@ -30,13 +30,13 @@ const testSortBy = 'fake sort option';
 const testFilters = ['some', 'fake', 'filters'];
 const testSetFilters = { add: jest.fn(), remove: jest.fn() };
 const testCheckboxSetValues = [testFilters, testSetFilters];
-const setPageNumber = jest.fn(val => ({ setPageNumber: val }));
-reduxHooks.useSetPageNumber.mockReturnValue(setPageNumber);
+const setVideoPageNumber = jest.fn(val => ({ setVideoPageNumber: val }));
+reduxHooks.useSetVideoPageNumber.mockReturnValue(setVideoPageNumber);
 
 describe('CourseList hooks', () => {
   let out;
 
-  reduxHooks.useCurrentCourseList.mockReturnValue(testListData);
+  reduxHooks.useCurrentVideoList.mockReturnValue(testListData);
   paragon.useCheckboxSetValues.mockImplementation(() => testCheckboxSetValues);
 
   describe('state values', () => {
@@ -44,19 +44,19 @@ describe('CourseList hooks', () => {
     jest.clearAllMocks();
   });
 
-  describe('useCourseListData', () => {
+  describe('useVideoListData', () => {
     afterEach(state.restore);
     beforeEach(() => {
       state.mock();
       state.mockVal(state.keys.sortBy, testSortBy);
-      out = hooks.useCourseListData();
+      out = hooks.useVideoListData();
     });
     describe('behavior', () => {
       it('initializes sort with enrollment date', () => {
         state.expectInitializedWith(state.keys.sortBy, SortKeys.enrolled);
       });
       it('loads current course list with sortBy, filters, and page size', () => {
-        expect(reduxHooks.useCurrentCourseList).toHaveBeenCalledWith({
+        expect(reduxHooks.useCurrentVideoList).toHaveBeenCalledWith({
           sortBy: testSortBy,
           filters: testFilters,
           pageSize: ListPageSize,
@@ -66,8 +66,8 @@ describe('CourseList hooks', () => {
         state.mock();
         state.mockVal(state.keys.sortBy, testSortBy);
         queryString.parse.mockReturnValueOnce({ disable_pagination: 1 });
-        out = hooks.useCourseListData();
-        expect(reduxHooks.useCurrentCourseList).toHaveBeenCalledWith({
+        out = hooks.useVideoListData();
+        expect(reduxHooks.useCurrentVideoList).toHaveBeenCalledWith({
           sortBy: testSortBy,
           filters: testFilters,
           pageSize: 0,
@@ -76,9 +76,9 @@ describe('CourseList hooks', () => {
     });
     describe('output', () => {
       test('pageNumber loads from usePageNumber hook', () => {
-        expect(out.pageNumber).toEqual(reduxHooks.usePageNumber());
+        expect(out.videoPageNumber).toEqual(reduxHooks.usePageNumber());
       });
-      test('numPages and visible list load from useCurrentCourseList hook', () => {
+      test('numPages and visible list load from useCurrentVideoList hook', () => {
         expect(out.numPages).toEqual(testListData.numPages);
         expect(out.visibleList).toEqual(testListData.visible);
       });
@@ -86,7 +86,7 @@ describe('CourseList hooks', () => {
         expect(out.showFilters).toEqual(true);
         state.mockVal(state.keys.sortBy, testSortBy);
         paragon.useCheckboxSetValues.mockReturnValueOnce([[], testSetFilters]);
-        out = hooks.useCourseListData();
+        out = hooks.useVideoListData();
         // don't show filter when list is empty.
         expect(out.showFilters).toEqual(false);
       });
@@ -106,7 +106,7 @@ describe('CourseList hooks', () => {
           expect(testSetFilters.remove).toHaveBeenCalledWith(testFilters[0]);
         });
         test('setPageNumber dispatches setPageNumber action with passed value', () => {
-          expect(out.setPageNumber(2)).toEqual(setPageNumber(2));
+          expect(out.setVideoPageNumber(2)).toEqual(setVideoPageNumber(2));
         });
       });
     });
