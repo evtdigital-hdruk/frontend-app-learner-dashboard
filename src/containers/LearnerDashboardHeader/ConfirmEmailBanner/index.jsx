@@ -12,6 +12,7 @@ import confirmEmailSVG from 'assets/confirm-email.svg';
 import messages from './messages';
 import './ConfirmEmailBanner.scss';
 import useConfirmEmailBannerData from './hooks';
+import { getCookie, removeCookie } from '../../../utils/cookies';
 
 export const ConfirmEmailBanner = () => {
   const {
@@ -48,6 +49,12 @@ export const ConfirmEmailBanner = () => {
     setWaitForResend(true);
     setTimeLeft(60);
   };
+
+  const showAccountActivationCookie = getCookie('show-account-activation-popup');
+
+  if (showAccountActivationCookie && !isNeeded) {
+    removeCookie('show-account-activation-popup');
+  }
 
   if (!isNeeded) { return null; }
 
