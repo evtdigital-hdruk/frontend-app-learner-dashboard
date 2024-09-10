@@ -29,7 +29,7 @@ export const ConfirmEmailBanner = () => {
 
   const showAccountActivationCookie = getCookie('show-account-activation-popup');
 
-  if (showAccountActivationCookie && !isNeeded) {
+  if (showAccountActivationCookie && isNeeded === false) {
     removeCookie('show-account-activation-popup');
   }
 
