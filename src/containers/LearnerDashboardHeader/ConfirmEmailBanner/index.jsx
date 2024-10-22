@@ -75,13 +75,20 @@ export const ConfirmEmailBanner = () => {
         </ModalDialog.Hero>
       )}
       footerNode={(
-        <Button className="mx-auto my-3" variant="danger" disabled={waitForResend} onClick={resendVerificationEmailClick}>
-          {
+        <div className="w-100 d-flex flex-column justify-content-center my-3">
+          <Button className="mx-auto" variant="danger" onClick={() => window.location.reload()}>
+            {
+            formatMessage(messages.emailConfirmedButton)
+          }
+          </Button>
+          <Button className="mx-auto my-1" variant="link" disabled={waitForResend} onClick={resendVerificationEmailClick}>
+            {
             waitForResend
               ? `${formatMessage(messages.resendConfirmEmailButton)} (${timeLeft}s)`
               : formatMessage(messages.resendConfirmEmailButton)
           }
-        </Button>
+          </Button>
+        </div>
       )}
     >
       <h1 className="text-center p-3">{formatMessage(messages.confirmEmailModalHeader)}</h1>
