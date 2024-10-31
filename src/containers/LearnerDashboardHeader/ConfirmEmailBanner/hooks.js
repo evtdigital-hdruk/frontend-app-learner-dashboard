@@ -20,7 +20,7 @@ export const useConfirmEmailBannerData = () => {
   const sendConfirmEmail = apiHooks.useSendConfirmEmail();
 
   const openConfirmModalButtonClick = () => {
-    sendConfirmEmail();
+    // sendConfirmEmail();
     openConfirmModal();
     closePageBanner();
   };
@@ -37,6 +37,7 @@ export const useConfirmEmailBannerData = () => {
     closeConfirmModal,
     openConfirmModalButtonClick,
     userConfirmEmailButtonClick,
+    sendConfirmEmail,
   };
 };
 

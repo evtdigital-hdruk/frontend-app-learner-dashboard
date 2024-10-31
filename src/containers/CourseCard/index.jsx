@@ -19,24 +19,24 @@ export const CourseCard = ({
   const isCollapsed = useIsCollapsed();
   const orientation = isCollapsed ? 'vertical' : 'horizontal';
   return (
-    <div className="mb-4.5 course-card" id={cardId} data-testid="CourseCard">
+    <div className="mb-4.5 course-card col-sm-6 col-2xl-4" id={cardId} data-testid="CourseCard">
       <Card orientation={orientation}>
         <div className="d-flex flex-column w-100">
-          <div {...(!isCollapsed && { className: 'd-flex' })}>
-            <CourseCardImage cardId={cardId} orientation="horizontal" />
-            <Card.Body>
-              <Card.Header
-                title={<CourseCardTitle cardId={cardId} />}
-                actions={<CourseCardMenu cardId={cardId} />}
-              />
-              <Card.Section className="pt-0">
-                <CourseCardDetails cardId={cardId} />
-              </Card.Section>
-              <Card.Footer orientation={orientation}>
-                <CourseCardActions cardId={cardId} />
-              </Card.Footer>
-            </Card.Body>
-          </div>
+          <CourseCardImage className="w-100" cardId={cardId} orientation={orientation} />
+          <Card.Body>
+            <Card.Header
+              title={<CourseCardTitle cardId={cardId} />}
+              actions={<CourseCardMenu cardId={cardId} />}
+              className="mt-0"
+              size="sm"
+            />
+            <Card.Section className="py-0">
+              <CourseCardDetails cardId={cardId} />
+            </Card.Section>
+            <Card.Footer orientation="horizontal">
+              <CourseCardActions cardId={cardId} />
+            </Card.Footer>
+          </Card.Body>
           <CourseCardBanners cardId={cardId} />
         </div>
       </Card>

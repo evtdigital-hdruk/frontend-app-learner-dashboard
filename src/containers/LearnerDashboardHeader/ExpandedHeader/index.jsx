@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { getConfig } from '@edx/frontend-platform';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import { Button } from '@openedx/paragon';
 
@@ -26,25 +25,18 @@ export const ExpandedHeader = () => {
   }
 
   return (
-    <header className="d-flex shadow-sm align-items-center learner-variant-header pl-4">
+    !isCollapsed && (
+    <header className="d-flex shadow-sm align-items-center learner-variant-header pl-4 max-w-xl mx-auto">
       <div className="flex-grow-1 d-flex align-items-center">
         <BrandLogo />
 
         <Button
           as="a"
-          href="/"
+          href={urls.dashboardUrl()}
           variant="inverse-primary"
           className="p-4 course-link"
         >
-          {formatMessage(messages.course)}
-        </Button>
-        <Button
-          as="a"
-          href={urls.programsUrl()}
-          variant="inverse-primary"
-          className="p-4"
-        >
-          {formatMessage(messages.program)}
+          {formatMessage(messages.dashboard)}
         </Button>
         <Button
           as="a"
@@ -58,7 +50,7 @@ export const ExpandedHeader = () => {
         <span className="flex-grow-1" />
         <Button
           as="a"
-          href={getConfig().SUPPORT_URL}
+          href={urls.helpUrl()}
           variant="inverse-primary"
           className="p-4"
         >

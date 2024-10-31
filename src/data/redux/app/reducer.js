@@ -4,6 +4,7 @@ import { StrictDict } from 'utils';
 
 const initialState = {
   pageNumber: 1,
+  videoPageNumber: 1,
   courseData: {},
   entitlement: [],
   emailConfirmation: {},
@@ -51,6 +52,7 @@ const app = createSlice({
       selectSessionModal: { cardId: payload },
     }),
     setPageNumber: (state, { payload }) => ({ ...state, pageNumber: payload }),
+    setVideoPageNumber: (state, { payload }) => ({ ...state, videoPageNumber: payload }),
     setFilters: (state, { payload }) => ({
       ...state,
       filters: payload,
