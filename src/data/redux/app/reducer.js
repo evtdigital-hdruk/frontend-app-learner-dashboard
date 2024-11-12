@@ -13,6 +13,7 @@ const initialState = {
   suggestedCourses: [],
   selectSessionModal: {},
   filters: [],
+  videoFilters: [],
 };
 
 export const cardId = (val) => `card-${val}`;
@@ -68,6 +69,22 @@ const app = createSlice({
     clearFilters: (state) => ({
       ...state,
       filters: [],
+    }),
+    setVideoFilters: (state, { payload }) => ({
+      ...state,
+      videoFilters: payload,
+    }),
+    addVideoFilter: (state, { payload }) => ({
+      ...state,
+      videoFilters: [...state.videoFilters, payload],
+    }),
+    removeVideoFilter: (state, { payload }) => ({
+      ...state,
+      videoFilters: state.videoFilters.filter(item => item !== payload),
+    }),
+    clearVideoFilters: (state) => ({
+      ...state,
+      videoFilters: [],
     }),
   },
 });

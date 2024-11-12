@@ -10,7 +10,7 @@ export const sortFn = (transform, { reverse }) => (v1, v2) => {
   return ((a > b) ? 1 : -1) * (reverse ? -1 : 1);
 };
 
-export const courseFilters = StrictDict({
+export const videoFiltersList = StrictDict({
   [FilterKeys.notEnrolled]: (course) => !course.enrollment.isEnrolled,
   [FilterKeys.done]: (course) => course.courseRun !== null && course.courseRun.isArchived,
   [FilterKeys.upgraded]: (course) => course.enrollment.isVerified,
@@ -23,25 +23,25 @@ export const transforms = StrictDict({
   [SortKeys.title]: ({ course }) => course.courseName.toLowerCase(),
 });
 
-export const courseFilterFn = filters => (filters.length
-  ? course => filters.reduce((match, filter) => match && courseFilters[filter](course), true)
+export const courseFilterFn = videoFilters => (videoFilters.length
+  ? course => videoFilters.reduce((match, filter) => match && videoFiltersList[filter](course), true)
   : () => true);
 
 export const currentVideoList = (allCourses, {
   sortBy,
-  filters,
+  videoFilters,
 }) => allCourses
   .filter((course) => course.course.courseType === 'video')
-  .filter(module.courseFilterFn(filters))
+  .filter(module.courseFilterFn(videoFilters))
   .sort(module.sortFn(transforms[sortBy], { reverse: sortBy === SortKeys.enrolled }));
 
 export const visibleVideoList = (state, {
   sortBy,
-  filters,
+  videoFilters,
   pageSize,
 }) => {
   const courses = Object.values(simpleSelectors.courseData(state));
-  const list = module.currentVideoList(courses, { sortBy, filters });
+  const list = module.currentVideoList(courses, { sortBy, videoFilters });
   const videoPageNumber = simpleSelectors.videoPageNumber(state);
 
   if (pageSize === 0) {
@@ -51,7 +51,7 @@ export const visibleVideoList = (state, {
     };
   }
   return {
-    visible: list.slice((videoPageNumber - 1) * pageSize, videoPageNumber * pageSize),
+    visibleVideoList: list.slice((videoPageNumber - 1) * pageSize, videoPageNumber * pageSize),
     numPages: Math.ceil(list.length / pageSize),
   };
 };
