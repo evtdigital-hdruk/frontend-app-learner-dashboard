@@ -5,7 +5,7 @@ import { Pagination } from '@openedx/paragon';
 import {
   ActiveVideoFilters,
 } from 'containers/VideoFilterControls';
-import CourseCard from 'containers/CourseCard';
+import VideoCard from 'containers/VideoCard';
 
 import { useIsCollapsed } from './hooks';
 
@@ -23,7 +23,7 @@ export const VideoList = ({
       <div className="d-flex flex-column flex-grow-1 container">
         <div className="row">
           {visibleVideoList.map(({ cardId }) => (
-            <CourseCard key={cardId} cardId={cardId} />
+            <VideoCard key={cardId} cardId={cardId} />
           ))}
         </div>
         {numPages > 1 && (
