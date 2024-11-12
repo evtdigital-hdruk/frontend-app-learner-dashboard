@@ -21,10 +21,12 @@ export const CourseList = ({ courseListData }) => {
           <ActiveCourseFilters {...filterOptions} />
         </div>
       )}
-      <div className="d-flex flex-column flex-grow-1">
-        {visibleList.map(({ cardId }) => (
-          <CourseCard key={cardId} cardId={cardId} />
-        ))}
+      <div className="d-flex flex-column flex-grow-1 container">
+        <div className="row">
+          {visibleList.map(({ cardId }) => (
+            <CourseCard key={cardId} cardId={cardId} />
+          ))}
+        </div>
         {numPages > 1 && (
           <Pagination
             variant={isCollapsed ? 'reduced' : 'secondary'}
