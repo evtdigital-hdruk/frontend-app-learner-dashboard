@@ -60,7 +60,7 @@ export const ExpandedHeader = () => {
 
       <AuthenticatedUserDropdown />
     </header>
-  );
+    ));
 };
 
 ExpandedHeader.propTypes = {};
