@@ -11,6 +11,7 @@ const actions = redux.actions.app;
 export const usePageNumber = () => useSelector(selectors.pageNumber);
 export const useVideoPageNumber = () => useSelector(selectors.videoPageNumber);
 export const useFilters = () => useSelector(selectors.filters);
+export const useVideoFilters = () => useSelector(selectors.videoFilters);
 export const useEmailConfirmationData = () => useSelector(selectors.emailConfirmation);
 export const useEnterpriseDashboardData = () => useSelector(selectors.enterpriseDashboard);
 export const usePlatformSettingsData = () => useSelector(selectors.platformSettings);
@@ -105,6 +106,26 @@ export const useRemoveFilter = () => {
 export const useClearFilters = () => {
   const dispatch = useDispatch();
   return (value) => dispatch(actions.clearFilters(value));
+};
+
+export const useSetVideoFilters = () => {
+  const dispatch = useDispatch();
+  return (value) => dispatch(actions.setVideoFilters(value));
+};
+
+export const useAddVideoFilter = () => {
+  const dispatch = useDispatch();
+  return (value) => dispatch(actions.addVideoFilter(value));
+};
+
+export const useRemoveVideoFilter = () => {
+  const dispatch = useDispatch();
+  return (value) => dispatch(actions.removeVideoFilter(value));
+};
+
+export const useClearVideoFilters = () => {
+  const dispatch = useDispatch();
+  return (value) => dispatch(actions.clearVideoFilters(value));
 };
 
 export const useLoadData = () => {
