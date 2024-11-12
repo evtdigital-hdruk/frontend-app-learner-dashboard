@@ -5,7 +5,7 @@ import { RequestKeys } from 'data/constants/requests';
 import EnterpriseDashboardModal from 'containers/EnterpriseDashboardModal';
 import SelectSessionModal from 'containers/SelectSessionModal';
 import CoursesPanel from 'containers/CoursesPanel';
-import VideoList from 'containers/VideoList';
+import VideosPanel from 'containers/VideosPanel';
 
 import LoadedSidebar from 'containers/WidgetContainers/LoadedSidebar';
 import NoCoursesSidebar from 'containers/WidgetContainers/NoCoursesSidebar';
@@ -37,7 +37,8 @@ export const Dashboard = () => {
           ? (<LoadingView />)
           : (
             <DashboardLayout sidebar={hasCourses ? LoadedSidebar : NoCoursesSidebar}>
-              <CourseList />
+              <CoursesPanel />
+              <VideosPanel />
             </DashboardLayout>
           )}
       </div>
