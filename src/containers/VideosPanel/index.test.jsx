@@ -1,7 +1,7 @@
 import { shallow } from '@edx/react-unit-test-utils';
 
 import { reduxHooks } from 'hooks';
-import { useCourseListData } from './hooks';
+import { useVideoListData } from './hooks';
 import CoursesPanel from '.';
 
 jest.mock('hooks', () => ({
@@ -34,7 +34,7 @@ describe('CoursesPanel', () => {
   };
 
   const createWrapper = (courseListData) => {
-    useCourseListData.mockReturnValueOnce({
+    useVideoListData.mockReturnValueOnce({
       ...defaultCourseListData,
       ...courseListData,
     });
