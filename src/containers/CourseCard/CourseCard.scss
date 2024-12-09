@@ -30,6 +30,13 @@
       margin-top: 1.5rem;
     }
 
+    @media (max-width: 767px) {
+      .pgn__card-header-title-sm {
+        font-size: 1rem !important;
+        line-height: 1.125rem;
+      }
+    }
+
     .pgn__card-footer {
       flex-wrap: nowrap;
 
@@ -38,11 +45,15 @@
       }
 
       .pgn__action-row {
+        flex-wrap: wrap;
+        row-gap: 5px;
         align-self: flex-end;
         white-space: nowrap;
-        > * {
+
+        >* {
           margin: 0 5px !important;
           margin-bottom: 0 !important;
+          font-weight: 700;
         }
       }
     }
