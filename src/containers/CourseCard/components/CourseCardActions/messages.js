@@ -4,7 +4,7 @@ const messages = defineMessages({
   upgrade: {
     id: 'learner-dash.courseCard.actions.upgrade',
     description: 'Course card upgrade button text',
-    defaultMessage: 'Upgrade',
+    defaultMessage: 'Purchase Certificate',
   },
   beginCourse: {
     id: 'learner-dash.courseCard.actions.beginCourse',
@@ -14,7 +14,7 @@ const messages = defineMessages({
   resume: {
     id: 'learner-dash.courseCard.actions.resume',
     description: 'Course card resume button text',
-    defaultMessage: 'Resume',
+    defaultMessage: 'Resume Course',
   },
   viewCourse: {
     id: 'learner-dash.courseCard.actions.viewCourse',
