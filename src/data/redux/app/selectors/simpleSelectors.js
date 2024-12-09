@@ -24,6 +24,7 @@ export const simpleSelectors = StrictDict({
 export const cardSimpleSelectors = StrictDict({
   certificate: ({ certificate }) => certificate,
   course: ({ course }) => course,
+  additionalSettings: ({ additionalSettings }) => additionalSettings,
   courseProvider: ({ courseProvider }) => courseProvider,
   courseRun: ({ courseRun }) => courseRun,
   credit: ({ credit }) => credit,

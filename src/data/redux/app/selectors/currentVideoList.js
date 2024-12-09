@@ -31,7 +31,7 @@ export const currentVideoList = (allCourses, {
   sortBy,
   videoFilters,
 }) => allCourses
-  .filter((course) => course.course.courseType === 'video')
+  .filter((course) => course.additionalSettings?.otherCourseSettings?.courseType === 'video')
   .filter(module.courseFilterFn(videoFilters))
   .sort(module.sortFn(transforms[sortBy], { reverse: sortBy === SortKeys.enrolled }));
 
