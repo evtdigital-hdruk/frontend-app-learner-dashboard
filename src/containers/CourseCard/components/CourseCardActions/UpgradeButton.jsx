@@ -28,6 +28,11 @@ export const UpgradeButton = ({ cardId }) => {
     href: upgradeUrl,
     onClick: trackUpgradeClick,
   };
+
+  if (disableUpgradeCourse) {
+    return null;
+  }
+
   return (
     <ActionButton
       iconBefore={Locked}
