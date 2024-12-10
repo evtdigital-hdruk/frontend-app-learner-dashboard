@@ -40,7 +40,7 @@ export const ExpandedHeader = () => {
         </Button>
         <Button
           as="a"
-          href={urls.baseAppUrl(courseSearchUrl)}
+          href={urls.marketingBaseUrl(courseSearchUrl)}
           variant="inverse-primary"
           className="p-4"
           onClick={exploreCoursesClick}

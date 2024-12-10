@@ -31,19 +31,19 @@ export const CollapseMenuBody = ({ isOpen }) => {
     <div className="d-flex flex-column shadow-sm nav-small-menu">
       <Button
         as="a"
-        href={urls.baseAppUrl(courseSearchUrl)}
+        href={urls.marketingBaseUrl(courseSearchUrl)}
         variant="inverse-primary"
         onClick={exploreCoursesClick}
       >
         {formatMessage(messages.discoverNew)}
       </Button>
-      <Button as="a" href={getConfig().SUPPORT_URL} variant="inverse-primary">
+      <Button as="a" href={urls.helpUrl()} variant="inverse-primary">
         {formatMessage(messages.help)}
       </Button>
       {authenticatedUser && (
         <>
           {!!dashboard && (
-            <Button as="a" href={dashboard.url} variant="inverse-primary">
+            <Button as="a" href={urls.dashboardUrl()} variant="inverse-primary">
               {formatMessage(messages.dashboard)}
             </Button>
           )}

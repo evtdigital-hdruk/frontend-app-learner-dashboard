@@ -5,6 +5,7 @@ import { getConfig } from '@edx/frontend-platform';
 export const getEcommerceUrl = () => getConfig().ECOMMERCE_BASE_URL;
 
 const getBaseUrl = () => getConfig().LMS_BASE_URL;
+const getMarketingUrl = () => getConfig().MARKETING_SITE_BASE_URL;
 
 export const getApiUrl = () => (`${getConfig().LMS_BASE_URL}/api`);
 
@@ -20,11 +21,12 @@ export const updateUrl = (base, url) => ((url == null || url.startsWith('http://
 
 export const baseAppUrl = (url) => updateUrl(getBaseUrl(), url);
 export const learningMfeUrl = (url) => updateUrl(getConfig().LEARNING_BASE_URL, url);
+export const marketingBaseUrl = (url) => updateUrl(getMarketingUrl(), url);
 
 // static view url
 const dashboardUrl = () => baseAppUrl('/');
 const programsUrl = () => baseAppUrl('/dashboard/programs');
-const helpUrl = () => (`${getConfig().LMS_BASE_URL}/help`);
+const helpUrl = () => marketingBaseUrl('/help');
 
 export const creditPurchaseUrl = (courseId) => `${getEcommerceUrl()}/credit/checkout/${courseId}/`;
 export const creditRequestUrl = (providerId) => `${getApiUrl()}/credit/v1/providers/${providerId}/request/`;
@@ -32,6 +34,7 @@ export const creditRequestUrl = (providerId) => `${getApiUrl()}/credit/v1/provid
 export default StrictDict({
   getApiUrl,
   baseAppUrl,
+  marketingBaseUrl,
   courseUnenroll,
   creditPurchaseUrl,
   creditRequestUrl,
