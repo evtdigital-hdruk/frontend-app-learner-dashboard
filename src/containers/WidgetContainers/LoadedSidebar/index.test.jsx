@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { shallow } from '@edx/react-unit-test-utils';
 
 import hooks from 'widgets/ProductRecommendations/hooks';
 import { mockFooterRecommendationsHook } from 'widgets/ProductRecommendations/testData';
@@ -7,6 +7,9 @@ import WidgetSidebar from '.';
 jest.mock('widgets/LookingForChallengeWidget', () => 'LookingForChallengeWidget');
 jest.mock('widgets/ProductRecommendations/hooks', () => ({
   useShowRecommendationsFooter: jest.fn(),
+}));
+jest.mock('@openedx/frontend-plugin-framework', () => ({
+  PluginSlot: 'PluginSlot',
 }));
 
 describe('WidgetSidebar', () => {
@@ -23,7 +26,7 @@ describe('WidgetSidebar', () => {
       const wrapper = shallow(<WidgetSidebar {...props} />);
 
       expect(props.setSidebarShowing).toHaveBeenCalledWith(true);
-      expect(wrapper).toMatchSnapshot();
+      expect(wrapper.snapshot).toMatchSnapshot();
     });
   });
 
@@ -34,7 +37,7 @@ describe('WidgetSidebar', () => {
     const wrapper = shallow(<WidgetSidebar {...props} />);
 
     expect(props.setSidebarShowing).not.toHaveBeenCalled();
-    expect(wrapper.type()).toBeNull();
+    expect(wrapper.shallowWrapper).toBeNull();
   });
 
   test('is hidden when the has the treatment values', () => {
@@ -44,6 +47,6 @@ describe('WidgetSidebar', () => {
     const wrapper = shallow(<WidgetSidebar {...props} />);
 
     expect(props.setSidebarShowing).not.toHaveBeenCalled();
-    expect(wrapper.type()).toBeNull();
+    expect(wrapper.shallowWrapper).toBeNull();
   });
 });

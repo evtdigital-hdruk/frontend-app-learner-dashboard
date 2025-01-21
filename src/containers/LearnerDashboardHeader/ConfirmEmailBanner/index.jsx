@@ -5,7 +5,7 @@ import {
   Image,
   MarketingModal,
   ModalDialog,
-} from '@edx/paragon';
+} from '@openedx/paragon';
 import { useIntl } from '@edx/frontend-platform/i18n';
 
 import confirmEmailSVG from 'assets/confirm-email.svg';

@@ -11,15 +11,18 @@ const initialState = {
   enterpriseDashboard: {},
   platformSettings: {},
   suggestedCourses: [],
-  filterState: {},
   selectSessionModal: {},
+  filters: [],
+  videoFilters: [],
 };
 
 export const cardId = (val) => `card-${val}`;
 
 export const today = Date.now();
 
-// eslint-disable-next-line no-unused-vars
+/**
+ * Creates a redux slice with actions to load dashboard data and manage visual layout
+ */
 const app = createSlice({
   name: 'app',
   initialState,
@@ -51,6 +54,38 @@ const app = createSlice({
     }),
     setPageNumber: (state, { payload }) => ({ ...state, pageNumber: payload }),
     setVideoPageNumber: (state, { payload }) => ({ ...state, videoPageNumber: payload }),
+    setFilters: (state, { payload }) => ({
+      ...state,
+      filters: payload,
+    }),
+    addFilter: (state, { payload }) => ({
+      ...state,
+      filters: [...state.filters, payload],
+    }),
+    removeFilter: (state, { payload }) => ({
+      ...state,
+      filters: state.filters.filter(item => item !== payload),
+    }),
+    clearFilters: (state) => ({
+      ...state,
+      filters: [],
+    }),
+    setVideoFilters: (state, { payload }) => ({
+      ...state,
+      videoFilters: payload,
+    }),
+    addVideoFilter: (state, { payload }) => ({
+      ...state,
+      videoFilters: [...state.videoFilters, payload],
+    }),
+    removeVideoFilter: (state, { payload }) => ({
+      ...state,
+      videoFilters: state.videoFilters.filter(item => item !== payload),
+    }),
+    clearVideoFilters: (state) => ({
+      ...state,
+      videoFilters: [],
+    }),
   },
 });
 

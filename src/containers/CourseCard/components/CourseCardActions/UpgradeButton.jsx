@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Locked } from '@edx/paragon/icons';
+import { Award } from '@openedx/paragon/icons';
 import { useIntl } from '@edx/frontend-platform/i18n';
 
 import track from 'tracking';
@@ -28,9 +28,14 @@ export const UpgradeButton = ({ cardId }) => {
     href: upgradeUrl,
     onClick: trackUpgradeClick,
   };
+
+  if (disableUpgradeCourse) {
+    return null;
+  }
+
   return (
     <ActionButton
-      iconBefore={Locked}
+      iconBefore={Award}
       variant="outline-primary"
       disabled={disableUpgradeCourse}
       {...!disableUpgradeCourse && enabledProps}

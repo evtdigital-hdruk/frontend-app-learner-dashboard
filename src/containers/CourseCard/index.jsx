@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Card } from '@edx/paragon';
+import { Card } from '@openedx/paragon';
 
 import { useIsCollapsed } from './hooks';
 import CourseCardBanners from './components/CourseCardBanners';
@@ -21,13 +21,13 @@ export const CourseCard = ({
   return (
     <div className="mb-4.5 course-card col-sm-6 col-2xl-4" id={cardId} data-testid="CourseCard">
       <Card orientation={orientation}>
-        <div className="d-flex flex-column w-100">
+        <div className="d-flex flex-column w-100 h-100">
           <CourseCardImage className="w-100" cardId={cardId} orientation={orientation} />
           <Card.Body>
             <Card.Header
               title={<CourseCardTitle cardId={cardId} />}
               actions={<CourseCardMenu cardId={cardId} />}
-              className="mt-0"
+              className="mt-1 pl-3 pr-0"
               size="sm"
             />
             <Card.Section className="py-0">

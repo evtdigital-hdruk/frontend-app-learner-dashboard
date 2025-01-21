@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { shallow } from '@edx/react-unit-test-utils';
 
 import { htmlProps } from 'data/constants/htmlKeys';
 import { reduxHooks } from 'hooks';
