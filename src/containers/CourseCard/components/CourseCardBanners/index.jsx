@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { reduxHooks } from 'hooks';
 
 import CourseBannerSlot from 'plugin-slots/CourseBannerSlot';
-import CertificateBanner from './CertificateBanner';
+import CertificateBannerSlot from 'plugin-slots/CertificateBannerSlot';
 import CreditBanner from './CreditBanner';
 import EntitlementBanner from './EntitlementBanner';
 import RelatedProgramsBanner from './RelatedProgramsBanner';
@@ -16,7 +16,7 @@ export const CourseCardBanners = ({ cardId }) => {
       <RelatedProgramsBanner cardId={cardId} />
       <CourseBannerSlot cardId={cardId} />
       <EntitlementBanner cardId={cardId} />
-      {isEnrolled && <CertificateBanner cardId={cardId} />}
+      {isEnrolled && <CertificateBannerSlot cardId={cardId} />}
       {isEnrolled && <CreditBanner cardId={cardId} />}
     </div>
   );
