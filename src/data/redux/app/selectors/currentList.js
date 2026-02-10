@@ -46,11 +46,13 @@ export const visibleList = (state, {
   if (pageSize === 0) {
     return {
       visible: list,
+      fullList: courses,
       numPages: 1,
     };
   }
   return {
     visibleList: list.slice((pageNumber - 1) * pageSize, pageNumber * pageSize),
+    fullList: courses,
     numPages: Math.ceil(list.length / pageSize),
   };
 };

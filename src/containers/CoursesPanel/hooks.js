@@ -28,7 +28,7 @@ export const useCourseListData = () => {
   const querySearch = new URLSearchParams(window.location.search);
   const disablePagination = querySearch.get('disable_pagination');
 
-  const { numPages, visibleList } = reduxHooks.useCurrentCourseList({
+  const { numPages, visibleList, fullList } = reduxHooks.useCurrentCourseList({
     sortBy,
     filters,
     pageSize: Number(disablePagination) === 1 ? 0 : ListPageSize,
@@ -41,6 +41,7 @@ export const useCourseListData = () => {
     numPages,
     setPageNumber,
     visibleList,
+    fullList,
     filterOptions: {
       sortBy,
       setSortBy,
