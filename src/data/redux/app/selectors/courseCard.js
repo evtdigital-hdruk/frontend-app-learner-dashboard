@@ -56,6 +56,8 @@ export const courseCard = StrictDict({
       progressUrl: baseAppUrl(courseRun.progressUrl),
       resumeUrl: baseAppUrl(courseRun.resumeUrl), // resume will route this to learning mfe.
       unenrollUrl: baseAppUrl(courseRun.unenrollUrl),
+
+      noGrade: courseRun.noGrade, // needed to customise course banner (hide percentage banner when course not graded)
     }),
   ),
   credit: mkCardSelector(
