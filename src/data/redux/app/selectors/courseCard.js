@@ -58,6 +58,7 @@ export const courseCard = StrictDict({
       unenrollUrl: baseAppUrl(courseRun.unenrollUrl),
 
       noGrade: courseRun.noGrade, // needed to customise course banner (hide percentage banner when course not graded)
+      upgradeUrl: courseRun.upgradeUrl, // needed to show Upgrade button
     }),
   ),
   credit: mkCardSelector(
